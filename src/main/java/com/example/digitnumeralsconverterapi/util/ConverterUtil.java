@@ -26,27 +26,30 @@ public class ConverterUtil {
 
     public int convertToDigit(String numeral) {
 
-        Map<Character,Integer> mapping=new HashMap<Character,Integer>();
+        Map<Character, Integer> mapping = new HashMap<Character, Integer>();
 
-        mapping.put('I',1);
-        mapping.put('V',5);
-        mapping.put('X',10);
-        mapping.put('L',50);
-        mapping.put('C',100);
-        mapping.put('D',500);
-        mapping.put('M',1000);
-
-        numeral = numeral.replace("IV","IIII");
-        numeral = numeral.replace("IX","VIIII");
-        numeral = numeral.replace("XL","XXXX");
-        numeral = numeral.replace("XC","LXXXX");
-        numeral = numeral.replace("CD","CCCC");
-        numeral = numeral.replace("CM","DCCCC");
+        mapping.put('I', 1);
+        mapping.put('V', 5);
+        mapping.put('X', 10);
+        mapping.put('L', 50);
+        mapping.put('C', 100);
+        mapping.put('D', 500);
+        mapping.put('M', 1000);
 
         int number = 0;
-        for (int i = 0; i < numeral.length(); i++)
-        {
-            number = number + (mapping.get(numeral.charAt(i)));
+        for (int i = 0; i < numeral.length(); i++) {
+            int s1 = mapping.get(numeral.charAt(i));
+
+            if (i + 1 < numeral.length()) {
+                int s2 = mapping.get(numeral.charAt(i + 1));
+                if (s1 >= s2) {
+                    number = number + s1;
+                } else {
+                    number = number - s1;
+                }
+            } else {
+                number = number + s1;
+            }
         }
         System.out.println(number);
         return number;
