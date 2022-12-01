@@ -10,7 +10,7 @@ public class ConverterController {
     private ConverterUtil converterUtil;
 
     @RequestMapping(value = "/digitToNumerals", method = { RequestMethod.GET, RequestMethod.POST })
-    public String digitConverter(@RequestParam(value = "digit", defaultValue = "125") Integer digit) {
+    public String digitConverter(@RequestParam(value = "digit", defaultValue = "9") Integer digit) {
 
         if (digit < 1 || digit > 4000) {
             System.out.println("Invalid roman number value!");
@@ -22,7 +22,7 @@ public class ConverterController {
     }
 
     @RequestMapping(value = "/numeralsToDigit", method = { RequestMethod.GET, RequestMethod.POST })
-    public int numeralsConverter(@RequestParam(value = "digit", defaultValue = "MCMXV") String numeral) {
+    public int numeralsConverter(@RequestParam(value = "numeral", defaultValue = "MCMXV") String numeral) {
 
         int digit = converterUtil.convertToDigit(numeral);
         if(digit < 1 || digit > 4000){
