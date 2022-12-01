@@ -1,7 +1,5 @@
 package com.example.digitnumeralsconverterapi.controller;
 
-import com.example.digitnumeralsconverterapi.model.DigitRequest;
-import com.example.digitnumeralsconverterapi.model.NumeralsRequest;
 import com.example.digitnumeralsconverterapi.util.ConverterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
